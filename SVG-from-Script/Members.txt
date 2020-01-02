@@ -1,0 +1,143 @@
+Color.CompareTo	Description of method Color.CompareTo goes here.
+Color.Equals	Description of method Color.Equals goes here.
+Color.GetHashCode	Description of method Color.GetHashCode goes here.
+Color.GetType	Description of method Color.GetType goes here.
+Color.GetTypeCode	Description of method Color.GetTypeCode goes here.
+Color.HasFlag	Description of method Color.HasFlag goes here.
+Color.ToString	Description of method Color.ToString goes here.
+Graphics.AddMetafileComment	void AddMetafileComment(byte[] data);
+Graphics.BeginContainer	GraphicsContainer BeginContainer();{\r\n}GraphicsContainer BeginContainer(Rectangle dstrect, Rectangle srcrect, GraphicsUnit unit);{\r\n}GraphicsContainer BeginContainer(RectangleF dstrect, RectangleF srcrect, GraphicsUnit unit);
+Graphics.Clear	void Clear(Color color);
+Graphics.Clip	System.Drawing.Region Clip {get; set;}
+Graphics.ClipBounds	System.Drawing.RectangleF ClipBounds {get;}
+Graphics.CompositingMode	System.Drawing.Drawing2D.CompositingMode CompositingMode {get; set;}
+Graphics.CompositingQuality	System.Drawing.Drawing2D.CompositingQuality CompositingQuality {get; set;}
+Graphics.CopyFromScreen	Description of method CopyFromScreen goes here.
+Graphics.CreateObjRef	Description of method CreateObjRef goes here.
+Graphics.Dispose	Description of method Dispose goes here.
+Graphics.DpiX	float DpiX {get;}
+Graphics.DpiY	float DpiY {get;}
+Graphics.DrawArc	void DrawArc(Pen pen, Rectangle rect, float startAngle, float sweepAngle);{\r\n}void DrawArc(Pen pen, RectangleF rect, float startAngle, float sweepAngle);{\r\n}void DrawArc(Pen pen, int x, int y, int width, int height, int startAngle, int sweepAngle);{\r\n}void DrawArc(Pen pen, float x, float y, float width, float height, float startAngle, float sweepAngle);
+Graphics.DrawBezier	void DrawBezier(Pen pen, Point pt1, Point pt2, Point pt3, Point pt4);{\r\n}void DrawBezier(Pen pen, PointF pt1, PointF pt2, PointF pt3, PointF pt4);{\r\n}void DrawBezier(Pen pen, float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4);
+Graphics.DrawBeziers	void DrawBeziers(Pen pen, Point[] points);{\r\n}void DrawBeziers(Pen pen, PointF[] points);
+Graphics.DrawClosedCurve	void DrawClosedCurve(Pen pen, Point[] points);{\r\n}void DrawClosedCurve(Pen pen, Point[] points, float tension, FillMode fillmode);{\r\n}void DrawClosedCurve(Pen pen, PointF[] points);{\r\n}void DrawClosedCurve(Pen pen, PointF[] points, float tension, FillMode fillmode);
+Graphics.DrawCurve	void DrawCurve(Pen pen, Point[] points);{\r\n}void DrawCurve(Pen pen, Point[] points, int offset, int numberOfSegments, float tension);{\r\n}void DrawCurve(Pen pen, Point[] points, float tension);{\r\n}void DrawCurve(Pen pen, PointF[] points);{\r\n}void DrawCurve(Pen pen, PointF[] points, int offset, int numberOfSegments);{\r\n}void DrawCurve(Pen pen, PointF[] points, int offset, int numberOfSegments, float tension);{\r\n}void DrawCurve(Pen pen, PointF[] points, float tension);
+Graphics.DrawEllipse	void DrawEllipse(Pen pen, Rectangle rect);{\r\n}void DrawEllipse(Pen pen, RectangleF rect);{\r\n}void DrawEllipse(Pen pen, int x, int y, int width, int height);{\r\n}void DrawEllipse(Pen pen, float x, float y, float width, float height);
+Graphics.DrawIcon	void DrawIcon(Icon icon, Rectangle targetRect);{\r\n}void DrawIcon(Icon icon, int x, int y);
+Graphics.DrawIconUnstretched	void DrawIconUnstretched(Icon icon, Rectangle targetRect);
+Graphics.DrawImage	Description of method DrawImage goes here.
+Graphics.DrawImageUnscaled	Description of method DrawImageUnscaled goes here.
+Graphics.DrawImageUnscaledAndClipped	Description of method DrawImageUnscaledAndClipped goes here.
+Graphics.DrawLine	void DrawLine(Pen pen, Point pt1, Point pt2);{\r\n}void DrawLine(Pen pen, PointF pt1, PointF pt2);{\r\n}void DrawLine(Pen pen, int x1, int y1, int x2, int y2);{\r\n}void DrawLine(Pen pen, float x1, float y1, float x2, float y2);
+Graphics.DrawLines	void DrawLines(Pen pen, Point[] points);{\r\n}void DrawLines(Pen pen, PointF[] points);
+Graphics.DrawPath	void DrawPath(Pen pen, GraphicsPath path);
+Graphics.DrawPie	Description of method DrawPie goes here.
+Graphics.DrawPolygon	Description of method DrawPolygon goes here.
+Graphics.DrawRectangle	void DrawRectangle(Pen pen, Rectangle rect);{\r\n}void DrawRectangle(Pen pen, int x, int y, int width, int height);{\r\n}void DrawRectangle(Pen pen, float x, float y, float width, float height);
+Graphics.DrawRectangles	void DrawRectangles(Pen pen, Rectangle[] rects);{\r\n}void DrawRectangles(Pen pen, RectangleF[] rects);
+Graphics.DrawString	Description of method DrawString goes here.
+Graphics.EndContainer	Description of method EndContainer goes here.
+Graphics.EnumerateMetafile	Description of method EnumerateMetafile goes here.
+Graphics.Equals	Description of method Equals goes here.
+Graphics.ExcludeClip	Description of method ExcludeClip goes here.
+Graphics.FillClosedCurve	Description of method FillClosedCurve goes here.
+Graphics.FillEllipse	Description of method FillEllipse goes here.
+Graphics.FillPath	Description of method FillPath goes here.
+Graphics.FillPie	Description of method FillPie goes here.
+Graphics.FillPolygon	Description of method FillPolygon goes here.
+Graphics.FillRectangle	Description of method FillRectangle goes here.
+Graphics.FillRectangles	Description of method FillRectangles goes here.
+Graphics.FillRegion	Description of method FillRegion goes here.
+Graphics.Flush	Description of method Flush goes here.
+Graphics.FromHdc	Graphics FromHdc (IntPtr hdc);
+Graphics.FromHdcInternal	Graphics FromHdcInternal (IntPtr hdc);
+Graphics.FromHwnd	Description of method FromHwnd goes here.
+Graphics.FromHwndInternal	Graphics FromHwndInternal (IntPtr hwnd);
+Graphics.FromImage	Graphics FromImage (System.Drawing.Image image);
+Graphics.get_Clip	Description of method get_Clip goes here.
+Graphics.get_ClipBounds	Description of method get_ClipBounds goes here.
+Graphics.get_CompositingMode	Description of method get_CompositingMode goes here.
+Graphics.get_CompositingQuality	Description of method get_CompositingQuality goes here.
+Graphics.get_DpiX	Description of method get_DpiX goes here.
+Graphics.get_DpiY	Description of method get_DpiY goes here.
+Graphics.get_InterpolationMode	Description of method get_InterpolationMode goes here.
+Graphics.get_IsClipEmpty	Description of method get_IsClipEmpty goes here.
+Graphics.get_IsVisibleClipEmpty	Description of method get_IsVisibleClipEmpty goes here.
+Graphics.get_PageScale	Description of method get_PageScale goes here.
+Graphics.get_PageUnit	Description of method get_PageUnit goes here.
+Graphics.get_PixelOffsetMode	Description of method get_PixelOffsetMode goes here.
+Graphics.get_RenderingOrigin	Description of method get_RenderingOrigin goes here.
+Graphics.get_SmoothingMode	Description of method get_SmoothingMode goes here.
+Graphics.get_TextContrast	Description of method get_TextContrast goes here.
+Graphics.get_TextRenderingHint	Description of method get_TextRenderingHint goes here.
+Graphics.get_Transform	Description of method get_Transform goes here.
+Graphics.get_VisibleClipBounds	Description of method get_VisibleClipBounds goes here.
+Graphics.GetContextInfo	Description of method GetContextInfo goes here.
+Graphics.GetHalftonePalette	Description of method GetHalftonePalette goes here.
+Graphics.GetHashCode	Description of method GetHashCode goes here.
+Graphics.GetHdc	Description of method GetHdc goes here.
+Graphics.GetLifetimeService	Description of method GetLifetimeService goes here.
+Graphics.GetNearestColor	Color GetNearestColor(Color color);
+Graphics.GetType	Description of method GetType goes here.
+Graphics.InitializeLifetimeService	Description of method InitializeLifetimeService goes here.
+Graphics.InterpolationMode	System.Drawing.Drawing2D.InterpolationMode InterpolationMode {get; set;}
+Graphics.IntersectClip	Description of method IntersectClip goes here.
+Graphics.IsClipEmpty	bool IsClipEmpty {get;}
+Graphics.IsVisible	Description of method IsVisible goes here.
+Graphics.IsVisibleClipEmpty	bool IsVisibleClipEmpty {get;}
+Graphics.MeasureCharacterRanges	Description of method MeasureCharacterRanges goes here.
+Graphics.MeasureString	Description of method MeasureString goes here.
+Graphics.MultiplyTransform	Description of method MultiplyTransform goes here.
+Graphics.PageScale	float PageScale {get; set;}
+Graphics.PageUnit	System.Drawing.GraphicsUnit PageUnit {get; set;}
+Graphics.PixelOffsetMode	System.Drawing.Drawing2D.PixelOffsetMode PixelOffsetMode {get; set;}
+Graphics.ReleaseHdc	void ReleaseHdc ();
+Graphics.ReleaseHdcInternal	void ReleaseHdcInternal (IntPtr hdc);
+Graphics.RenderingOrigin	System.Drawing.Point RenderingOrigin {get; set;}
+Graphics.ResetClip	Description of method ResetClip goes here.
+Graphics.ResetTransform	Description of method ResetTransform goes here.
+Graphics.Restore	Description of method Restore goes here.
+Graphics.RotateTransform	Description of method RotateTransform goes here.
+Graphics.Save	Description of method Save goes here.
+Graphics.ScaleTransform	Description of method ScaleTransform goes here.
+Graphics.set_Clip	Description of method set_Clip goes here.
+Graphics.set_CompositingMode	Description of method set_CompositingMode goes here.
+Graphics.set_CompositingQuality	Description of method set_CompositingQuality goes here.
+Graphics.set_InterpolationMode	Description of method set_InterpolationMode goes here.
+Graphics.set_PageScale	Description of method set_PageScale goes here.
+Graphics.set_PageUnit	Description of method set_PageUnit goes here.
+Graphics.set_PixelOffsetMode	Description of method set_PixelOffsetMode goes here.
+Graphics.set_RenderingOrigin	Description of method set_RenderingOrigin goes here.
+Graphics.set_SmoothingMode	Description of method set_SmoothingMode goes here.
+Graphics.set_TextContrast	Description of method set_TextContrast goes here.
+Graphics.set_TextRenderingHint	Description of method set_TextRenderingHint goes here.
+Graphics.set_Transform	Description of method set_Transform goes here.
+Graphics.SetClip	Description of method SetClip goes here.
+Graphics.SmoothingMode	System.Drawing.Drawing2D.SmoothingMode SmoothingMode {get; set;}
+Graphics.TextContrast	int TextContrast {get; set;}
+Graphics.TextRenderingHint	System.Drawing.Text.TextRenderingHint TextRenderingHint {get; set;}
+Graphics.ToString	Description of method ToString goes here.
+Graphics.Transform	System.Drawing.Drawing2D.Matrix Transform {get; set;}
+Graphics.TransformPoints	Description of method TransformPoints goes here.
+Graphics.TranslateClip	Description of method TranslateClip goes here.
+Graphics.TranslateTransform	void TranslateTransform(float dx, float dy);{\r\n}void TranslateTransform(float dx, float dy, MatrixOrder order);
+Graphics.VisibleClipBounds	System.Drawing.RectangleF VisibleClipBounds {get;}
+Path.ChangeExtension	Description of method Path.ChangeExtension goes here.
+Path.Combine	Description of method Path.Combine goes here.
+Path.Equals	Description of method Path.Equals goes here.
+Path.GetDirectoryName	Description of method Path.GetDirectoryName goes here.
+Path.GetExtension	Description of method Path.GetExtension goes here.
+Path.GetFileName	Description of method Path.GetFileName goes here.
+Path.GetFileNameWithoutExtension	Description of method Path.GetFileNameWithoutExtension goes here.
+Path.GetFullPath	Description of method Path.GetFullPath goes here.
+Path.GetHashCode	Description of method Path.GetHashCode goes here.
+Path.GetInvalidFileNameChars	Description of method Path.GetInvalidFileNameChars goes here.
+Path.GetInvalidPathChars	Description of method Path.GetInvalidPathChars goes here.
+Path.GetPathRoot	Description of method Path.GetPathRoot goes here.
+Path.GetRandomFileName	Description of method Path.GetRandomFileName goes here.
+Path.GetTempFileName	Description of method Path.GetTempFileName goes here.
+Path.GetTempPath	Description of method Path.GetTempPath goes here.
+Path.GetType	Description of method Path.GetType goes here.
+Path.HasExtension	Description of method Path.HasExtension goes here.
+Path.IsPathRooted	Description of method Path.IsPathRooted goes here.
+Path.ToString	Description of method Path.ToString goes here.
