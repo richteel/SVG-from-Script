@@ -47,7 +47,7 @@ namespace SVG_from_Script
             this.FileName = FileName;
             this.ScriptText = ScriptText;
 
-            if(string.IsNullOrEmpty(ScriptText) && File.Exists(FileName))
+            if (string.IsNullOrEmpty(ScriptText) && File.Exists(FileName))
             {
                 this.ScriptText = File.ReadAllText(FileName);
             }
@@ -87,6 +87,8 @@ namespace SVG_from_Script
             }
         }
 
+        public bool IsTextSelected { get { return fastColoredTextBox1.SelectedText.Length > 0; } }
+
         public string ScriptText
         {
             get { return fastColoredTextBox1.Text; }
@@ -125,16 +127,6 @@ namespace SVG_from_Script
             fastColoredTextBox1.Paste();
         }
 
-        public string FindReplace_CountAll(string FindText)
-        {
-            int cnt = FindReplace.CountSubStrings(fastColoredTextBox1.Text, FindText);
-
-            if (cnt < 1)
-                return "Text not found";
-            else
-                return string.Format("Found {0} occurances", cnt);
-        }
-
         public void FindDialogShow()
         {
             fastColoredTextBox1.ShowFindDialog();
@@ -143,30 +135,6 @@ namespace SVG_from_Script
         public void FindReplaceDialogShow()
         {
             fastColoredTextBox1.ShowReplaceDialog();
-        }
-
-        public string FindReplace_FindNext(string FindText)
-        {
-            fastColoredTextBox1.ShowFindDialog();
-            return "";
-        }
-
-        public string FindReplace_Replace(string FindText, string ReplaceText)
-        {
-            fastColoredTextBox1.ShowReplaceDialog();
-            return "";
-        }
-
-        public string FindReplace_ReplaceAll(string FindText, string ReplaceText)
-        {
-            ReplaceResults results = FindReplace.ReplaceAll(fastColoredTextBox1.Text, FindText, ReplaceText);
-
-            fastColoredTextBox1.Text = results.ResultingText;
-
-            if (results.OccuranceCount < 1)
-                return "Text was not found. No changes made.";
-            else
-                return string.Format("Found and replaced {0} occurances", results.OccuranceCount);
         }
 
         protected override string GetPersistString()

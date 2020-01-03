@@ -26,8 +26,6 @@ namespace SVG_from_Script
         private frmReadOnlyText hintWindow = null;
         private frmReadOnlyText outputWindow = null;
         private frmReadOnlyText svgContents = null;
-
-        private frmFindReplace findReplace = null;
         #endregion Fields
 
         #region Constructor
@@ -264,7 +262,6 @@ namespace SVG_from_Script
             foreach (frmDocument docToClose in documents)
             {
                 docToClose.Close();
-                //docToClose.Dispose();
             }
 
             documents.Clear();
@@ -308,6 +305,25 @@ namespace SVG_from_Script
             hintWindow.ReadOnlyText = e.ToolTipText;
         }
 
+        private void EditToolStripMenuItem_DropDownOpening(object sender, EventArgs e)
+        {
+            cutToolStripMenuItem.Enabled = false;
+            copyToolStripMenuItem.Enabled = false;
+            deleteToolStripMenuItem.Enabled = false;
+
+            if (GetActiveDocument().IsTextSelected)
+            {
+                cutToolStripMenuItem.Enabled = true;
+                copyToolStripMenuItem.Enabled = true;
+                deleteToolStripMenuItem.Enabled = true;
+            }
+
+            pasteToolStripMenuItem.Enabled = false;
+
+            if(Clipboard.ContainsText())
+                pasteToolStripMenuItem.Enabled = true;
+        }
+
         private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -321,49 +337,6 @@ namespace SVG_from_Script
         private void FindReplaceToolStripMenuItem_Click(object sender, EventArgs e)
         {
             GetActiveDocument().FindReplaceDialogShow();
-
-            //if (findReplace == null)
-            //{
-            //    findReplace = new frmFindReplace();
-            //    findReplace.FindNext += FindReplace_FindNext;
-            //    findReplace.Replace += FindReplace_Replace;
-            //    findReplace.ReplaceAll += FindReplace_ReplaceAll;
-            //    findReplace.CountAll += FindReplace_CountAll;
-            //}
-
-            //findReplace.Show();
-        }
-
-        private void FindReplace_CountAll(object sender, FindEventArgs e)
-        {
-            frmFindReplace frForm = (frmFindReplace)sender;
-            frmDocument activeDoc = GetActiveDocument();
-
-            frForm.MessageText = activeDoc.FindReplace_CountAll(e.FindText);
-        }
-
-        private void FindReplace_Replace(object sender, FindEventArgs e)
-        {
-            frmFindReplace frForm = (frmFindReplace)sender;
-            frmDocument activeDoc = GetActiveDocument();
-
-            frForm.MessageText = activeDoc.FindReplace_Replace(e.FindText, e.ReplaceText);
-        }
-
-        private void FindReplace_ReplaceAll(object sender, FindEventArgs e)
-        {
-            frmFindReplace frForm = (frmFindReplace)sender;
-            frmDocument activeDoc = GetActiveDocument();
-
-            frForm.MessageText = activeDoc.FindReplace_ReplaceAll(e.FindText, e.ReplaceText);
-        }
-
-        private void FindReplace_FindNext(object sender, FindEventArgs e)
-        {
-            frmFindReplace frForm = (frmFindReplace)sender;
-            frmDocument activeDoc = GetActiveDocument();
-
-            frForm.MessageText = activeDoc.FindReplace_FindNext(e.FindText);
         }
 
         private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
