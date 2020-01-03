@@ -286,6 +286,21 @@ namespace SVG_from_Script
             AddNewScriptIfNone();
         }
 
+        private void CopyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GetActiveDocument().Edit_Copy();
+        }
+
+        private void CutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GetActiveDocument().Edit_Cut();
+        }
+
+        private void DeleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GetActiveDocument().Edit_Delete();
+        }
+
         private void Document_ToolTipShown(object sender, AutoCompleteHintEventArgs e)
         {
             frmDocument doc = (frmDocument)sender;
@@ -298,18 +313,25 @@ namespace SVG_from_Script
             Application.Exit();
         }
 
+        private void FindToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GetActiveDocument().FindDialogShow();
+        }
+
         private void FindReplaceToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (findReplace == null)
-            {
-                findReplace = new frmFindReplace();
-                findReplace.FindNext += FindReplace_FindNext;
-                findReplace.Replace += FindReplace_Replace;
-                findReplace.ReplaceAll += FindReplace_ReplaceAll;
-                findReplace.CountAll += FindReplace_CountAll;
-            }
+            GetActiveDocument().FindReplaceDialogShow();
 
-            findReplace.Show();
+            //if (findReplace == null)
+            //{
+            //    findReplace = new frmFindReplace();
+            //    findReplace.FindNext += FindReplace_FindNext;
+            //    findReplace.Replace += FindReplace_Replace;
+            //    findReplace.ReplaceAll += FindReplace_ReplaceAll;
+            //    findReplace.CountAll += FindReplace_CountAll;
+            //}
+
+            //findReplace.Show();
         }
 
         private void FindReplace_CountAll(object sender, FindEventArgs e)
@@ -322,7 +344,10 @@ namespace SVG_from_Script
 
         private void FindReplace_Replace(object sender, FindEventArgs e)
         {
-            throw new NotImplementedException();
+            frmFindReplace frForm = (frmFindReplace)sender;
+            frmDocument activeDoc = GetActiveDocument();
+
+            frForm.MessageText = activeDoc.FindReplace_Replace(e.FindText, e.ReplaceText);
         }
 
         private void FindReplace_ReplaceAll(object sender, FindEventArgs e)
@@ -335,7 +360,10 @@ namespace SVG_from_Script
 
         private void FindReplace_FindNext(object sender, FindEventArgs e)
         {
-            throw new NotImplementedException();
+            frmFindReplace frForm = (frmFindReplace)sender;
+            frmDocument activeDoc = GetActiveDocument();
+
+            frForm.MessageText = activeDoc.FindReplace_FindNext(e.FindText);
         }
 
         private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
@@ -427,6 +455,11 @@ namespace SVG_from_Script
 
                 documents.Add(docNew);
             }
+        }
+
+        private void PasteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GetActiveDocument().Edit_Paste();
         }
 
         private void ResetLayoutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -521,6 +554,11 @@ namespace SVG_from_Script
         private void SaveScriptAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SaveScriptAs(GetActiveDocument());
+        }
+
+        private void SelectAllToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GetActiveDocument().SelectAll();
         }
 
         private void WindowVisibilityMenuItem_Click(object sender, EventArgs e)

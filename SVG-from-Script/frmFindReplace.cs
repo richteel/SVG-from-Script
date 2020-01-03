@@ -37,13 +37,14 @@ namespace SVG_from_Script
         #endregion Private Methods
 
         #region Event Handlers
-        private void cmdClose_Click(object sender, EventArgs e)
+        private void CmdClose_Click(object sender, EventArgs e)
         {
             this.Hide();
         }
 
-        private void cmdCountAll_Click(object sender, EventArgs e)
+        private void CmdCountAll_Click(object sender, EventArgs e)
         {
+            txtInfo.Clear();
             FindEventArgs args = new FindEventArgs
             {
                 FindText = txtFind.Text,
@@ -52,8 +53,9 @@ namespace SVG_from_Script
             OnCountAll(args);
         }
 
-        private void cmdFindNext_Click(object sender, EventArgs e)
+        private void CmdFindNext_Click(object sender, EventArgs e)
         {
+            txtInfo.Clear();
             FindEventArgs args = new FindEventArgs
             {
                 FindText = txtFind.Text,
@@ -62,8 +64,9 @@ namespace SVG_from_Script
             OnFindNext(args);
         }
 
-        private void cmdReplace_Click(object sender, EventArgs e)
+        private void CmdReplace_Click(object sender, EventArgs e)
         {
+            txtInfo.Clear();
             FindEventArgs args = new FindEventArgs
             {
                 FindText = txtFind.Text,
@@ -72,14 +75,20 @@ namespace SVG_from_Script
             OnReplace(args);
         }
 
-        private void cmdReplaceAll_Click(object sender, EventArgs e)
+        private void CmdReplaceAll_Click(object sender, EventArgs e)
         {
+            txtInfo.Clear();
             FindEventArgs args = new FindEventArgs
             {
                 FindText = txtFind.Text,
                 ReplaceText = txtReplace.Text
             };
             OnReplaceAll(args);
+        }
+
+        private void FindReplace_TextChanged(object sender, EventArgs e)
+        {
+            txtInfo.Clear();
         }
         #endregion Event Handlers
 

@@ -99,6 +99,7 @@
             this.txtReplace.Name = "txtReplace";
             this.txtReplace.Size = new System.Drawing.Size(201, 50);
             this.txtReplace.TabIndex = 1;
+            this.txtReplace.TextChanged += new System.EventHandler(this.FindReplace_TextChanged);
             // 
             // label2
             // 
@@ -131,6 +132,7 @@
             this.txtFind.Name = "txtFind";
             this.txtFind.Size = new System.Drawing.Size(201, 50);
             this.txtFind.TabIndex = 1;
+            this.txtFind.TextChanged += new System.EventHandler(this.FindReplace_TextChanged);
             // 
             // label1
             // 
@@ -161,7 +163,7 @@
             this.cmdFindNext.TabIndex = 1;
             this.cmdFindNext.Text = "Find Next";
             this.cmdFindNext.UseVisualStyleBackColor = true;
-            this.cmdFindNext.Click += new System.EventHandler(this.cmdFindNext_Click);
+            this.cmdFindNext.Click += new System.EventHandler(this.CmdFindNext_Click);
             // 
             // panel7
             // 
@@ -182,7 +184,7 @@
             this.cmdCountAll.TabIndex = 1;
             this.cmdCountAll.Text = "Count All";
             this.cmdCountAll.UseVisualStyleBackColor = true;
-            this.cmdCountAll.Click += new System.EventHandler(this.cmdCountAll_Click);
+            this.cmdCountAll.Click += new System.EventHandler(this.CmdCountAll_Click);
             // 
             // cmdReplaceAll
             // 
@@ -193,7 +195,7 @@
             this.cmdReplaceAll.TabIndex = 1;
             this.cmdReplaceAll.Text = "Replace All";
             this.cmdReplaceAll.UseVisualStyleBackColor = true;
-            this.cmdReplaceAll.Click += new System.EventHandler(this.cmdReplaceAll_Click);
+            this.cmdReplaceAll.Click += new System.EventHandler(this.CmdReplaceAll_Click);
             // 
             // panel6
             // 
@@ -214,7 +216,7 @@
             this.cmdReplace.TabIndex = 1;
             this.cmdReplace.Text = "Replace";
             this.cmdReplace.UseVisualStyleBackColor = true;
-            this.cmdReplace.Click += new System.EventHandler(this.cmdReplace_Click);
+            this.cmdReplace.Click += new System.EventHandler(this.CmdReplace_Click);
             // 
             // panel5
             // 
@@ -245,7 +247,7 @@
             this.cmdClose.TabIndex = 1;
             this.cmdClose.Text = "Close";
             this.cmdClose.UseVisualStyleBackColor = true;
-            this.cmdClose.Click += new System.EventHandler(this.cmdClose_Click);
+            this.cmdClose.Click += new System.EventHandler(this.CmdClose_Click);
             // 
             // frmFindReplace
             // 

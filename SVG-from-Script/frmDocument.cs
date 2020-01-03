@@ -105,6 +105,26 @@ namespace SVG_from_Script
             fastColoredTextBox1.Clear();
         }
 
+        public void Edit_Copy()
+        {
+            fastColoredTextBox1.Copy();
+        }
+
+        public void Edit_Cut()
+        {
+            fastColoredTextBox1.Cut();
+        }
+
+        public void Edit_Delete()
+        {
+            fastColoredTextBox1.ProcessKey(Keys.Delete);
+        }
+
+        public void Edit_Paste()
+        {
+            fastColoredTextBox1.Paste();
+        }
+
         public string FindReplace_CountAll(string FindText)
         {
             int cnt = FindReplace.CountSubStrings(fastColoredTextBox1.Text, FindText);
@@ -115,14 +135,26 @@ namespace SVG_from_Script
                 return string.Format("Found {0} occurances", cnt);
         }
 
+        public void FindDialogShow()
+        {
+            fastColoredTextBox1.ShowFindDialog();
+        }
+
+        public void FindReplaceDialogShow()
+        {
+            fastColoredTextBox1.ShowReplaceDialog();
+        }
+
         public string FindReplace_FindNext(string FindText)
         {
-            throw new NotImplementedException();
+            fastColoredTextBox1.ShowFindDialog();
+            return "";
         }
 
         public string FindReplace_Replace(string FindText, string ReplaceText)
         {
-            throw new NotImplementedException();
+            fastColoredTextBox1.ShowReplaceDialog();
+            return "";
         }
 
         public string FindReplace_ReplaceAll(string FindText, string ReplaceText)
@@ -157,6 +189,11 @@ namespace SVG_from_Script
             this.FileName = FileName;
             SaveScriptFile();
         }
+
+        public void SelectAll()
+        {
+            fastColoredTextBox1.SelectAll();
+        }
         #endregion Public Methods
 
         #region Private Methods
@@ -170,6 +207,21 @@ namespace SVG_from_Script
         #endregion Private Methods
 
         #region Event Handlers
+        private void CopyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Edit_Copy();
+        }
+
+        private void CutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Edit_Cut();
+        }
+
+        private void DeleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Edit_Delete();
+        }
+
         private void FastColoredTextBox1_TextChanged(object sender, FastColoredTextBoxNS.TextChangedEventArgs e)
         {
             if (!fileModified)
@@ -177,6 +229,16 @@ namespace SVG_from_Script
                 fileModified = true;
                 UpdateTitle();
             }
+        }
+
+        private void PasteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Edit_Paste();
+        }
+
+        private void SelectAllToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SelectAll();
         }
 
         private void ToolTip_Popup(object sender, PopupEventArgs e)
@@ -193,12 +255,14 @@ namespace SVG_from_Script
         }
         #endregion Event Handlers
 
+        #region Events
         protected virtual void OnToolTipShown(AutoCompleteHintEventArgs e)
         {
             ToolTipShown?.Invoke(this, e);
         }
 
         public event EventHandler<AutoCompleteHintEventArgs> ToolTipShown;
+        #endregion Events
     }
 
     public class AutoCompleteHintEventArgs : EventArgs

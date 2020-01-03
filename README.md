@@ -1,7 +1,7 @@
 # SVG-from-Script
 Editor and Tool for creating SVG and other image files from C# script. I created this tool to aid in the design of SVG for cutting items on a laser cutter. I have been using Excel to calculate the position of objects but wanted a better way to get right to the SVG file instead of copying and pasting locations into Inkscape.
 
-This application uses C# scrip to generate SVG files and show a preview of the image. The preview may be saved in various image formats as well. The application works on the idea of creating and saving a project so changes can be made at a later time to tweak parameters and/or code.
+This application uses C# script to generate SVG files and show a preview of the image. The preview may be saved in various image formats as well. The application works on the idea of creating and saving a project so changes can be made at a later time to tweak parameters and/or code.
 
 Install the following NuGet packages:
 -
