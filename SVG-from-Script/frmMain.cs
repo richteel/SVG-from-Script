@@ -14,18 +14,18 @@ namespace SVG_from_Script
     public partial class frmMain : Form
     {
         #region Fields
-        private const string TITLE = "SVG from Script";
         private const string SCRIPTFILEFILTER = "SVG Image Editor Script (*.ses)|*.ses|All files (*.*)|*.*";
         private const string LAYOUTSTOREFILE = @"layout.xml";
         private const string NEWSCRIPTFORMATSTRINGPREFIX = "new ";
 
-        private DeserializeDockContent m_deserializeDockContent;
+        private readonly DeserializeDockContent m_deserializeDockContent;
 
-        private List<frmDocument> documents = new List<frmDocument>();
-        private frmImagePreview imagePreview = null;
-        private frmReadOnlyText hintWindow = null;
-        private frmReadOnlyText outputWindow = null;
-        private frmReadOnlyText svgContents = null;
+        private readonly List<frmDocument> documents = new List<frmDocument>();
+        private readonly frmImagePreview imagePreview = null;
+        private readonly frmReadOnlyText hintWindow = null;
+        private readonly frmReadOnlyText outputWindow = null;
+        private readonly frmReadOnlyText svgContents = null;
+        private frmHelp helpForm = null;
         #endregion Fields
 
         #region Constructor
@@ -277,7 +277,6 @@ namespace SVG_from_Script
             {
                 documents.Remove(docToClose);
                 docToClose.Close();
-                docToClose = null;
             }
 
             AddNewScriptIfNone();
@@ -300,8 +299,6 @@ namespace SVG_from_Script
 
         private void Document_ToolTipShown(object sender, AutoCompleteHintEventArgs e)
         {
-            frmDocument doc = (frmDocument)sender;
-
             hintWindow.ReadOnlyText = e.ToolTipText;
         }
 
@@ -366,7 +363,6 @@ namespace SVG_from_Script
                     {
                         documents.Remove(doc);
                         doc.Close();
-                        doc = null;
                     }
                 }
             }
@@ -534,10 +530,18 @@ namespace SVG_from_Script
             GetActiveDocument().SelectAll();
         }
 
+        private void ViewHelpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(helpForm == null)
+                helpForm = new frmHelp();
+
+            helpForm.Show(this);
+        }
+
         private void WindowVisibilityMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem mnuItm = (ToolStripMenuItem)sender;
-            DockContent dockContent = null;
+            DockContent dockContent;
 
             switch (mnuItm.Tag.ToString().ToLower())
             {

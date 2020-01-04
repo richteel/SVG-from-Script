@@ -1,0 +1,55 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Help</title>
+    <style type="text/css">
+        .non-floater {
+            overflow: hidden;
+            height: 100%;
+        }
+
+        .topmenu {
+            height: 50px;
+        }
+
+        iframe {
+            height: 100%;
+            width: 100%;
+            padding: 0;
+            border: 0;
+        }
+
+        table {
+            height: 100%;
+            width: 100%;
+            border: 0;
+        }
+    </style>
+    <script type="text/javascript" language="javascript">
+        function openLink(myUrl) {
+            var ifrm = document.getElementById("content");
+            
+            ifrm.setAttribute('src', myUrl);
+        }
+    </script>
+</head>
+<body>
+    <table>
+        <tr>
+            <td class="topmenu">
+                <a href="javascript:openLink('home.html');">Home</a>
+                <a href="javascript:openLink('scripting.html');">Scripting</a>
+            </td>
+        </tr>
+        <tr>
+            <td id="contentarea">
+                <div class="non-floater">
+                    <iframe id="content" src="home.html"></iframe>
+                </div>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
