@@ -197,10 +197,41 @@
     <Content Include="Help\home.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Help\images\Circles X.PNG">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Help\images\Circles X.SVG">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\fileOpen16.png" />
+    <Content Include="Images\fileOpen32.png" />
+    <Content Include="Images\help16.png" />
+    <Content Include="Images\help32.png" />
+    <Content Include="Images\run16.png" />
+    <Content Include="Images\run32.png" />
+    <Content Include="Images\save16.png" />
+    <Content Include="Images\save32.png" />
+    <Content Include="Images\saveAll16.png" />
+    <Content Include="Images\saveAll32.png" />
+    <Content Include="Images\savePicture16.png" />
+    <Content Include="Images\savePicture32.png" />
+    <Content Include="Images\scriptNew16.png" />
     <Content Include="Help\index.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Help\additional_info.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Help\menu.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Help\windows.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Help\scripting.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Help\stylesheet.css">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\help2.ico" />
@@ -208,6 +239,7 @@
     <Content Include="Images\output.ico" />
     <Content Include="Images\picture.ico" />
     <Content Include="Images\script.ico" />
+    <Content Include="Images\scriptNew32.png" />
     <Content Include="Images\SVG from Script Icon T.ico" />
     <Content Include="Images\SVG from Script Icon.ico" />
     <Content Include="Images\SVG from Script Icon.png" />
@@ -218,9 +250,7 @@
     <Content Include="SVG from Script Icon T.ico" />
     <Content Include="SVG from Script Icon.ico" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Help\images\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

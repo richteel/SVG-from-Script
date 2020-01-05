@@ -25,6 +25,7 @@ namespace SVG_from_Script
         private readonly frmReadOnlyText hintWindow = null;
         private readonly frmReadOnlyText outputWindow = null;
         private readonly frmReadOnlyText svgContents = null;
+
         private frmHelp helpForm = null;
         #endregion Fields
 
@@ -297,6 +298,11 @@ namespace SVG_from_Script
             GetActiveDocument().Edit_Delete();
         }
 
+        private void DockWindow_VisibleChanged(object sender, EventArgs e)
+        {
+            RefreshViewMenuItemsCheckedState();
+        }
+
         private void Document_ToolTipShown(object sender, AutoCompleteHintEventArgs e)
         {
             hintWindow.ReadOnlyText = e.ToolTipText;
@@ -323,6 +329,9 @@ namespace SVG_from_Script
 
         private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (helpForm != null)
+                helpForm.Dispose();
+
             Application.Exit();
         }
 
@@ -371,6 +380,11 @@ namespace SVG_from_Script
                 ResetLayout();
             }
 
+            imagePreview.VisibleChanged += DockWindow_VisibleChanged;
+            hintWindow.VisibleChanged += DockWindow_VisibleChanged;
+            outputWindow.VisibleChanged += DockWindow_VisibleChanged;
+            svgContents.VisibleChanged += DockWindow_VisibleChanged;
+
             AddNewScriptIfNone();
 
             RefreshViewMenuItemsCheckedState();
@@ -408,6 +422,7 @@ namespace SVG_from_Script
             openFileDialog1.Filter = SCRIPTFILEFILTER;
             openFileDialog1.FilterIndex = 0;
             openFileDialog1.Title = "Open Script File";
+            openFileDialog1.FileName = "";
 
             if (openFileDialog1.ShowDialog(this) == DialogResult.OK)
             {

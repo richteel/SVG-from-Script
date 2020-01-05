@@ -1,19 +1,29 @@
-﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <title>BINGO Help</title>
-    <style type="text/css">
-        td {
-            width: 150px;
-            text-align: center;
-            vertical-align: top;
-        }
-    </style>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <title>SVG from Script Help</title>
 </head>
 <body>
     <h1>SVG from Script Help</h1>
-    <p>Put help content here</p>
+    <p>SVG from Script was created to help create SVG files for laser cutting projects. Many times, repetative shapes need to be created and I wanted a way to automate the process. This application allows the user to write a script file to generate an SVG file. The script utilizes C# and provides serveral libraries by default.</p>
+    <ul>
+    	<li>System.Drawing</li>
+    	<li>System.Drawing.Drawing2D</li>
+    </ul>
+    <p>The graphics object is available to the script and is instantiated with the graphics variable "G". The following is an example script to draw some circles in an X pattern. </p>
+    <pre>Pen penGreen = new Pen(Color.Green, 3);
+Pen penPink = new Pen(Color.Pink, 2);
+
+G.DrawLine(penGreen, 0, 0, 200, 200); 
+G.DrawLine(penGreen, 200, 0, 0, 200);
+for(int i=0; i < 8; i++) {
+    G.DrawEllipse(penPink, i * 25, i*25, 25, 25);
+    G.DrawEllipse(penPink, i * 25, (7*25)-(i*25), 25, 25);
+}</pre>
+<p><img src="images/Circles X.PNG" height="200px" width="200px" alt="Resulting Image from script showing two lines with circles drawn on each line." ><br>
+	<i>Resulting Image (<a href="images/Circles X.PNG">PNG</a>&nbsp;<a href="images/Circles X.SVG">SVG</a>)</i></p>
 </body>
 </html>
