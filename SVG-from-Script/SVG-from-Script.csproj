@@ -36,7 +36,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>SVG from Script Icon T.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="FastColoredTextBox, Version=2.16.24.0, Culture=neutral, PublicKeyToken=fb8aa12b994ef61b, processorArchitecture=MSIL">
@@ -240,15 +241,12 @@
     <Content Include="Images\picture.ico" />
     <Content Include="Images\script.ico" />
     <Content Include="Images\scriptNew32.png" />
-    <Content Include="Images\SVG from Script Icon T.ico" />
     <Content Include="Images\SVG from Script Icon.ico" />
     <Content Include="Images\SVG from Script Icon.png" />
     <Content Include="Images\SVG_logo.ico" />
     <Content Include="Members.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="SVG from Script Icon T.ico" />
-    <Content Include="SVG from Script Icon.ico" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
