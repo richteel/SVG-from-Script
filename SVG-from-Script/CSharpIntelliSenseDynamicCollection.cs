@@ -74,11 +74,35 @@ namespace SVG_from_Script
             Assembly[] assemblies = AppDomain.CurrentDomain.GetAssemblies();
             foreach (var a in assemblies)
             {
-                foreach (var t in a.GetTypes())
-                    if (t.Name == name)
-                    {
-                        return t;
-                    }
+                /* Added try/catch to resolve an issue when running a failed script, then entering . after object name
+                 * causes the following error:
+                 * '((System.Reflection.RuntimeAssembly)a).DefinedTypes' threw an exception of type 
+                 *      'System.Reflection.ReflectionTypeLoadException'
+                 * Implementing solution suggested from:
+                 * https://stackoverflow.com/questions/6086633/get-types-in-assembly-error-system-reflection-reflectiontypeloadexception
+                 * 
+                 * Code:
+                 * Pen penBlack = new Pen(Color.Black, 2);
+                 * GraphicsPath path = new GraphicsPath();
+                 * 
+                 * GraphicsPath.AddLine(0, 0, 0, 26);
+                 * GraphicsPath.AddLine(0, 26, 0, 40);
+                 * 
+                 * After runing the failed code, change "GraphicsPath" in one of the last lines, then type "path."
+                 * will cause the error.
+                 */                
+                try
+                {
+                    foreach (var t in a.GetTypes())
+                        if (t.Name == name)
+                        {
+                            return t;
+                        }
+                }
+                catch (ReflectionTypeLoadException)
+                {
+
+                }
             }
 
             return null;

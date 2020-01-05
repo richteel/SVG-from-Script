@@ -1,0 +1,40 @@
+using System.Windows.Forms;
+
+Pen penBlack = new Pen(Color.Black, 0.2F);
+
+GraphicsPath path = new GraphicsPath();
+
+path.AddLine(0.100F, 65.187F, 0.100F, 71.187F);
+path.AddLine(0.193F, 71.288F, 4.147F, 71.284F);
+path.AddBeziers(GetHalfEclipse(4.147F, 71.284F, 6.244F, 4.629F));
+
+PointF[] eclipse01 = GetHalfEclipse(4.147F, 71.284F, 6.244F, 4.629F);
+
+for(int i=0; i < eclipse01.Length; i++) {
+    Console.WriteLine(string.Format("{0}\t{1}\t{2}", i, eclipse01[i].X, eclipse01[i].Y));
+}
+
+G.DrawPath(penBlack, path);
+
+
+
+private PointF[] GetHalfEclipse(float x1, float y1, float w, float h){
+    int numOfPoints = 19;
+    PointF[] retval = new PointF[numOfPoints];
+    
+    float a = w/2F;
+    float b = h;
+    float xIncrement = a/((float)(numOfPoints - 1)/2F);
+    
+    Console.WriteLine(string.Format("a = {0}", a));
+    Console.WriteLine(string.Format("b = {0}", b));
+    Console.WriteLine(string.Format("xi = {0}", xIncrement));
+    
+    for(int i=0; i < retval.Length; i++)
+    {
+        retval[i].X = x1 + (xIncrement * i);
+        retval[i].Y = (float)Math.Sqrt(Math.Pow(b, 2) * (1-(Math.Pow(retval[i].X-x1-a, 2F)/Math.Pow(a, 2F)))) + y1;
+    }
+    
+    return retval;
+}

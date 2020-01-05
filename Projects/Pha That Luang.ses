@@ -1,0 +1,54 @@
+Pen penBlack = new Pen(Color.Black, 0.2F);
+
+//G.DrawLine(penBlack, 0, 0, 0, 26); 
+//G.DrawLine(penBlack, 0, 26, 26, 40);
+
+GraphicsPath path = new GraphicsPath();
+
+
+path.AddLine(0.100F, 65.187F, 0.100F, 71.187F);
+path.AddLine(0.193F, 71.288F, 4.147F, 71.284F);
+path.AddBeziers(AddWallBump(4.147F, 71.284F, 8.221F));
+
+G.DrawPath(penBlack, path);
+
+/*
+for(int i=0; i < 8; i++) {
+    G.DrawEllipse(penPink, i * 25, i*25, 25, 25);
+    G.DrawEllipse(penPink, i * 25, (7*25)-(i*25), 25, 25);
+    }
+*/
+
+
+private PointF[] AddWallBump(float x1, float y1, float w){
+    PointF[] retval = 
+        {
+            new PointF(-0.5F, 0F),
+            new PointF(-0.444F, 0.339F),
+            new PointF(-0.389F, 0.466F),
+            new PointF(-0.333F, 0.552F),
+            new PointF(-0.278F, 0.616F),
+            new PointF(-0.222F, 0.664F),
+            new PointF(-0.167F, 0.699F),
+            new PointF(-0.111F, 0.722F),
+            new PointF(-0.056F, 0.736F),
+            new PointF(0F, 0.741F),
+            new PointF(0.056F, 0.736F),
+            new PointF(0.111F, 0.722F),
+            new PointF(0.167F, 0.699F),
+            new PointF(0.222F, 0.664F),
+            new PointF(0.278F, 0.616F),
+            new PointF(0.333F, 0.552F),
+            new PointF(0.389F, 0.466F),
+            new PointF(0.444F, 0.339F),
+            new PointF(0.5F, 0F)
+        };
+    
+    for(int i=0; i < retval.Length; i++)
+    {
+        retval[i].X = (retval[i].X * w) + x1 + (w/2);
+        retval[i].Y = (retval[i].Y * w) + y1;
+    }
+    
+    return retval;
+}

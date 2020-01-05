@@ -8,6 +8,7 @@ using SvgNet.SvgGdi;
 using System.Drawing.Imaging;
 using Microsoft.CodeAnalysis.CSharp.Scripting;
 using Microsoft.CodeAnalysis.Scripting;
+using System.Drawing.Drawing2D;
 
 namespace SVG_from_Script
 {
@@ -27,6 +28,9 @@ namespace SVG_from_Script
         private readonly frmReadOnlyText svgContents = null;
 
         private frmHelp helpForm = null;
+
+        private float dpmmX = 0;
+        private float dpmmY = 0;
         #endregion Fields
 
         #region Constructor
@@ -169,13 +173,46 @@ namespace SVG_from_Script
             dockPanel1.SaveAsXml(LAYOUTSTOREFILE);
         }
 
-        public static void RunScript(IGraphics ig, string ScriptText)
+        public void RunScript(IGraphics ig, string ScriptText)
         {
-            var scriptOptions = ScriptOptions.Default.WithEmitDebugInformation(true).AddReferences(typeof(IGraphics).Assembly).AddImports("System.Drawing", "System.Drawing.Drawing2D");
+            /*** Begin Part 1 of 2: Flip Y axis ***/
+            // Flip graphic area so Y axis positive is up rather than down
+            // https://stackoverflow.com/questions/39897413/how-to-change-the-origin-in-windows-forms-bitmap
+            // Begin graphics container
+            GraphicsContainer containerState = ig.BeginContainer();
+            // Flip the Y-Axis
+            ig.ScaleTransform(1.0F, -1.0F);
+            // Translate the drawing area accordingly
+            ig.TranslateTransform(0.0F, -(float)imagePreview.Height);
+            // Whatever you draw now (using this graphics context) will appear as
+            // though (0,0) were at the bottom left corner
+            /*** End Part 1 of 2: Flip Y axis ***/
+
+            // Scale from px to mm
+            if (dpmmX > 0 && dpmmY > 0)
+                ig.ScaleTransform(dpmmX, dpmmY);
+
+            var scriptOptions = ScriptOptions.Default.WithEmitDebugInformation(true).AddReferences(
+                typeof(IGraphics).Assembly).AddImports("System.Drawing",
+                                                        "System.Drawing.Drawing2D",
+                                                        "System");
+
+            string outFile = Path.Combine(Application.StartupPath, "output.txt");
+
+
 
             try
             {
-                var emitResult = CSharpScript.EvaluateAsync(ScriptText, scriptOptions, new ScriptHost { G = ig });
+                using (StreamWriter writer = new StreamWriter(outFile))
+                {
+                    Console.SetOut(writer);
+                    System.Threading.Tasks.Task<object> emitResult = CSharpScript.EvaluateAsync(ScriptText, scriptOptions, new ScriptHost { G = ig });
+
+                    /*** Begin Part 2 of 2: Flip Y axis ***/
+                    // End graphics container
+                    ig.EndContainer(containerState);
+                    /*** End Part 2 of 2: Flip Y axis ***/
+                }
             }
             catch (Exception)
             {
@@ -183,6 +220,8 @@ namespace SVG_from_Script
                 // e.Diagnostics.Verify(Diagnostic(ErrorCode.ERR_EncodinglessSyntaxTree, code).WithLocation(1, 1));
                 throw;
             }
+
+            outputWindow.ReadOnlyText = File.ReadAllText(outFile);
         }
 
         private DialogResult SaveChangesQuestion(string FileName)
@@ -469,6 +508,12 @@ namespace SVG_from_Script
             Bitmap bitmap = new Bitmap(picBox.Width, picBox.Height, PixelFormat.Format32bppArgb);
             GdiGraphics graphics = new GdiGraphics(Graphics.FromImage(bitmap));
 
+            if (dpmmX <= 0 || dpmmY <= 0)
+            {
+                dpmmX = graphics.DpiX / 25.4F;
+                dpmmY = graphics.DpiY / 25.4F;
+            }
+
             try
             {
                 RunScript(ig, doc.ScriptText);
@@ -510,8 +555,9 @@ namespace SVG_from_Script
             }
 
             saveFileDialog1.Filter = ImageFileTypes.FileDialogFilterAllImages + "|All Files|*.*";
-            saveFileDialog1.FilterIndex = 0;
+            saveFileDialog1.FilterIndex = 6;
             saveFileDialog1.Title = "Save Image File";
+            saveFileDialog1.FileName = Path.GetFileNameWithoutExtension(GetActiveDocument().FileName);
 
             if (saveFileDialog1.ShowDialog(this) == DialogResult.OK)
             {
